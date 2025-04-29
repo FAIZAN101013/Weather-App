@@ -1,134 +1,441 @@
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(-45deg, #dbdfe4, #c0d5eb, #2196F3, #0D47A1);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
+}
+
+/* Background gradient animation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Container Styling */
 .container {
-  background: linear-gradient(354deg, #137DF5 0%, #14B1F8 100%);
+  background: linear-gradient(135deg, #1565C0 0%, #1E88E5 100%);
   width: 100%;
   max-width: 400px;
-  height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 680px;
+  position: relative;
   text-align: center;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   padding: 2rem;
-  overflow: hidden;
+  overflow: visible; /* Changed from 'overflow: hidden' to make button visible */
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse 10s ease-in-out infinite;
+}
+
+/* Pulse animation for container */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 80px rgba(33, 150, 243, 0.5);
+  }
+  100% {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Glass effect before container */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  z-index: -1;
+  animation: shimmer 10s linear infinite;
+}
+
+/* Shimmer animation for glass effect */
+@keyframes shimmer {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 /* Date Styling */
 .container_date {
-  font-size: 24px;
-  font-weight: 300;
-  opacity: 0.7;
-  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: glowText 3s ease-in-out infinite alternate;
+}
+
+/* Text glow animation */
+@keyframes glowText {
+  0% {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
+  }
 }
 
 /* City Styling */
 .container_city {
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 700;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.2s ease-out;
+  transition: all 0.3s ease;
+}
+
+.container_city:hover {
+  letter-spacing: 1px;
+  transform: scale(1.02);
 }
 
 /* Degree Styling */
 .container_degree {
   font-size: 80px;
-  font-weight: 800;
+  font-weight: 700;
   color: white;
-  position: relative;
-  top: -20px;
-  margin-top: 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  display: inline-block;
+  border-radius: 50px;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  animation: pulseText 3s infinite alternate;
 }
 
-/* Image Styling */
-.container_img {
-  position: relative;
-  top: -30px;
-  width: 160px;
-  margin-bottom: 20px;
+@keyframes pulseText {
+  0% {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    text-shadow: 0 6px 15px rgba(33, 150, 243, 0.6);
+  }
+}
+
+.container_degree:hover {
+  color: #E3F2FD;
+  transform: scale(1.1);
+}
+
+/* Weather Icon Styling */
+.weather-icon {
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+  margin: 10px auto;
+  animation: floatAnimation 3s ease-in-out infinite;
+  transition: all 0.5s ease;
+}
+
+.weather-icon:hover {
+  filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.4));
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Weather Condition Styling */
 .country_per {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
   color: white;
   opacity: 0.9;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+  animation: fadeIn 1.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.country_per:hover {
+  opacity: 1;
+  letter-spacing: 0.5px;
+}
+
+/* Weather Data Container */
+.weather_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+}
+
+/* Additional Weather Info */
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
   margin-bottom: 20px;
+  animation: slideUp 1.2s ease-out;
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+  padding: 10px 5px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.weather-detail:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.weather-detail i {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.weather-detail:hover i {
+  transform: scale(1.2);
+  color: #FFEE58;
+}
+
+.weather-detail span {
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.weather-detail:hover span {
+  color: #E3F2FD;
+}
+
+.weather-detail p {
+  font-size: 14px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.weather-detail:hover p {
+  opacity: 1;
 }
 
 /* Input Styling */
 .input {
   border: none;
-  padding: 1rem;
+  padding: 12px 20px;
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  margin-bottom: 15px;
-  width: 85%;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 12px;
+  width: 80%;
   color: white;
   font-size: 16px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin-left: auto;
-  margin-right: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: borderPulse 4s infinite alternate;
+}
+
+@keyframes borderPulse {
+  0% {
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
+  100% {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
 }
 
 .input::placeholder {
-  color: #fff;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .input:focus {
   outline: none;
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  animation: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Button Styling */
 .btn {
-  background-color: #14B1F8;
+  background: #FF7043;
   border: none;
   color: white;
   padding: 12px 30px;
   border-radius: 30px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
+  width: 120px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  transform: rotate(45deg);
+  animation: shineEffect 3s infinite linear;
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
 }
 
 .btn:hover {
-  background-color: #137DF5;
-  transform: scale(1.05);
+  background: #F4511E;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 .btn:active {
-  background-color: #0a8dc7;
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Form Styling */
 .form {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* New floating animation with rotation */
+@keyframes floatWithRotation {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 /* Responsive adjustments */
@@ -136,18 +443,68 @@
   .container {
     width: 90%;
     height: auto;
+    min-height: 650px;
     padding: 1.5rem;
   }
 
   .container_degree {
-    font-size: 60px;
+    font-size: 72px;
   }
 
   .container_city {
-    font-size: 30px;
+    font-size: 34px;
   }
 
-  .container_img {
+  .weather-icon {
     width: 130px;
+    height: 130px;
+  }
+  
+  .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    width: 150px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+}
+
+/* Loading Animation */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Added animation for loading text */
+.loading-container p {
+  animation: fadeInOut 1.5s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
