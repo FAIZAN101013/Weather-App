@@ -1,13 +1,153 @@
-body {
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Global Styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Container Styling */
+.container {
+  background: linear-gradient(354deg, #137DF5 0%, #14B1F8 100%);
+  width: 100%;
+  max-width: 400px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Date Styling */
+.container_date {
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+/* City Styling */
+.container_city {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 1rem;
+  color: white;
+}
+
+/* Degree Styling */
+.container_degree {
+  font-size: 80px;
+  font-weight: 800;
+  color: white;
+  position: relative;
+  top: -20px;
+  margin-top: 0;
+}
+
+/* Image Styling */
+.container_img {
+  position: relative;
+  top: -30px;
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+/* Weather Condition Styling */
+.country_per {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* Input Styling */
+.input {
+  border: none;
+  padding: 1rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  margin-bottom: 15px;
+  width: 85%;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styling */
+.btn {
+  background-color: #14B1F8;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #137DF5;
+  transform: scale(1.05);
+}
+
+.btn:active {
+  background-color: #0a8dc7;
+}
+
+/* Form Styling */
+.form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .container_degree {
+    font-size: 60px;
+  }
+
+  .container_city {
+    font-size: 30px;
+  }
+
+  .container_img {
+    width: 130px;
+  }
 }
